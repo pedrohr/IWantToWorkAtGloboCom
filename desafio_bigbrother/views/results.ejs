@@ -1,0 +1,32 @@
+<script type="text/javascript" src="/javascripts/jquery.knob.js"></script>
+<script type="text/javascript" src="/javascripts/timer.js"></script>
+
+<div id="upper_info">
+
+  <div id="header">
+    <div id="brick"></div>
+    <div id="textHeader">
+      Quem deve ser <span class="highlight">eliminado</span>?
+    </div>
+  </div>
+
+  <div class="separator"></div>
+
+  <div id="congrats">
+    <span class="highlight">Parabéns!</span> Seu voto para <span class="highlight"><%= vote.participantName %></span> foi enviado com sucesso.
+  </div>
+</div>
+
+<div id="participants" class="row-fluid">
+  <% for (var i=0; i < vote.participantsNum; i++) { %>
+     <div class="participant <% if (i == vote.participantsNum-1) { %>last<%}%> span6" id=<%= i %>><div class="participantDisplay" id="p<%= i %>"></div></div>
+  <% } %>
+</div>
+
+<div id="countdown">
+  Faltam<br /><span id="timer"><%= vote.eta %></span> <br />para encerrar a votação
+</div>
+
+<div id="knobWrapper">
+  <input type="text" id="knob" value="<%= vote.knobInfo %>"></input>
+</div>

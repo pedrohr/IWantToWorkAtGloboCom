@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Votação BBB</title>
+  </head>
+  <body>
+    <div id="outterWrapper" class="container">
+      <div id="close"></div>
+      <div id="innerWrapper">
+	<div id="upper_info">
+	  <div id="header">
+	    <div id="brick"></div>
+	    <div id="textHeader">
+	      Quem deve ser <span class="highlight">eliminado</span>?
+	    </div>
+	  </div>
+	  <div class="separator"></div>
+	  <div id="participants" class="row-fluid">
+	    <% for(var i=0; i < participants.length; i++) { %>
+	       <div class="participant <% if (i == participants.length-1) { %>last<%}%> span6" id=<%= i %>>
+		 <div class="participant_header">
+		   Participante <%= i+1 %>
+		 </div>
+		 <div class="participantAvatar" id="p<%= i %>"></div>
+		 <div class="participantInstructions">
+		   Para eliminar o <span class="highlight"><%= participants[i].name %></span> pelo telefone <br /> disque <span class="highlight"><%= participants[i].phone %></span> ou mande um SMS para <span class="highlight"><%= participants[i].sms %></span>
+		 </div>
+	       </div>
+	       <% } %>
+	  </div>
+	</div>
+	<div id="formButton">
+	  <button id="send_button" class="btn btn-primary btn-large">Envie seu voto agora</button>
+	</div>
+      </div>
+    </div>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" src="/javascripts/jquery.js"></script>
+    <script type="text/javascript" src="/javascripts/votes.js"></script>
+</html>

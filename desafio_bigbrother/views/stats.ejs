@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Estatísticas: Paredão BBB</title>
+  </head>
+  <body>
+    <div id="outterWrapper" class="container">
+      <div id="close"></div>
+      <div id="innerWrapper">
+	<div id="upper_info">
+
+	  <div id="header">
+	    <div id="brick"></div>
+	    <div id="textHeader">
+	      Estatísticas <span class="highlight">Paredão BBB</span>
+	    </div>
+	  </div>
+
+	  <div class="separator"></div>
+
+	  <div id="stats">
+	    <div id="numvotes">
+	      <ul class="nav nav-list">
+		<li class="nav-header">Número de votos</li>
+		<% var sum = 0; for (var i = 0; i < participants.length; i++) {%>
+		   <li>Votos do(a) <%= participants[i].name%>: <%= info.votes[i]%></li>
+		   <% sum += info.votes[i]} %>
+		   <li>Número total de votos: <%= sum %></li>
+	      </ul>
+	    </div>
+
+	  </div>
+	</div>
+
+	<div id="participants" class="row-fluid">
+	  <% for (var i=0; i < 2; i++) { %>
+	     <div class="participant span6" id=<%= i %>><div class="participantDisplay stats" id="p<%= i %>"></div></div> <% } %>
+	</div>
+
+	<div id="countdown">
+	    <div id="hourlyVotes">
+	      <ul class="nav nav-list" id="hourlyVotes">
+		<li class="nav-header">Votos por hora</li>
+		<li>Média: <%= Math.round(info.hourly.average*100)/100 %></li>
+		<li>Máximo: <%= info.hourly.max %></li>
+		<li>Mínimo: <%= info.hourly.min %></li>
+	      </ul>  
+	    </div>
+	</div>
+
+	<div id="knobWrapper">
+	  <input type="text" id="knob" value="<%= Math.ceil(info.votes[0]*100/sum)%>"></input>
+	</div>
+
+      </div>
+    </div>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" src="/javascripts/jquery.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.knob.js"></script>
+<script type="text/javascript" src="/javascripts/timer.js"></script>
+</html>
