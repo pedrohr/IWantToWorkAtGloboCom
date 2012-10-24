@@ -4,6 +4,6 @@ all:
 	tar xzvf node-v0.8.12.tar.gz
 	cd node-v0.8.12; ./configure; make; sudo make install
 	sudo npm install -g node-gyp
-	npm install
+	sudo npm install
 	memcached -d -c 2048 -m 1024 &
 	NODE_ENV=production node app.js
